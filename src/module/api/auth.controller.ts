@@ -12,7 +12,6 @@ export class AuthController {
     @Post('register')
     @HttpCode(200)
     register(@Body() user: User) {
-        console.log(user);
         return this.authService.register(user);
     }
 

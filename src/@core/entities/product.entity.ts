@@ -28,6 +28,9 @@ export class Product {
   @Column({ name: 'type', nullable: false })
   type: string;
 
+  @Column({ name: 'image'})
+  image: string;
+
   @CreateDateColumn()
   createdDate!: Date;
 

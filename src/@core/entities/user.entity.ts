@@ -36,7 +36,6 @@ export class User {
   updatedDate!: Date;
 
   @OneToOne(() => Cart)
-  @JoinColumn()
   cart: Cart;
 
   @OneToMany(() => Order, (order) => order.user)

@@ -18,6 +18,7 @@ export interface Payload {
     createdDate: Date,
     updatedDate: Date,
     role: string,
+    idCart: string;
 }
 
 export interface RegisterRequest {
