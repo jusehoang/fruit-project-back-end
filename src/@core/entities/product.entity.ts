@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, Index, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, Index, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Brand } from "./brand.entity";
 
 @Entity('product')
 
@@ -13,20 +14,18 @@ export class Product {
   @Column({ name: 'price', nullable: false })
   price: number;
 
-  @Column({ name: 'isSale', nullable: false })
+  @Column({ name: 'isSale' })
   isSale: boolean;
 
-  @Column({ name: 'salePrice', nullable: false })
+  @Column({ name: 'salePrice' })
   salePrice: number;
 
   @Column({ name: 'saleNumber', nullable: false })
   saleNumber: number;
 
-  @Column({ name: 'isNew', nullable: false })
-  isNew: boolean;
-
-  @Column({ name: 'type', nullable: false })
-  type: string;
+  @OneToOne(() => Brand)
+  @JoinColumn()
+  brand: Brand;
 
   @Column({ name: 'image'})
   image: string;

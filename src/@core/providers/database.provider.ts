@@ -1,6 +1,6 @@
 import { Order } from './../entities/order.entity';
 import { Cart } from './../entities/cart.entity';
-import { Category } from './../entities/category.entity';
+import { Brand } from '../entities/brand.entity';
 import { Product } from './../entities/product.entity';
 import { User } from '../entities/user.entity';
 import { ConfigService } from "@nestjs/config";
@@ -9,7 +9,7 @@ import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 export const ENTITY_MODEL = [
 	User,
 	Product,
-	Category,
+	Brand,
 	Cart,
 	Order
 ];

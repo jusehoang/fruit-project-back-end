@@ -23,4 +23,7 @@ export class Order {
 
   @ManyToOne(() => User, (user) => user.orders)
   user: User;
+
+  @Column({ name: 'payment', nullable: false })
+  payment: string;
 }

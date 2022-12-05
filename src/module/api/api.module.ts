@@ -5,12 +5,14 @@ import { CoreModule } from "src/@core/core.module";
 import { RolesGuard } from 'src/@core/guards/roles.guard';
 import { AuthController } from './auth.controller';
 import { CategoryController } from './category.controller';
+import { CartController } from './cart.controller';
 
 @Module({
     imports: [CoreModule],
     controllers: [
         AuthController,
-        CategoryController
+        CategoryController,
+        CartController
     ],
     providers: [
         {

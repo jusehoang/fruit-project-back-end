@@ -47,7 +47,7 @@ export class AuthService {
       createdDate: user.createdDate,
       updatedDate: user.updatedDate,
       role: user.role,
-      accessToken: this.jwtService.sign(payload)
+      accessToken: this.jwtService.sign(payload),
     }
 
     return loginResponse;

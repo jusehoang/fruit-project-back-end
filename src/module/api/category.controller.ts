@@ -1,42 +1,42 @@
 import { Body, Controller, Delete, Get, HttpCode, Post, Put, Query } from "@nestjs/common";
 import { Role, Roles } from "src/@core/decorators/roles.decorator";
-import { CategoryRequest, CategoryRequestUpdate } from "src/@core/models/category.model";
-import { CategoryService } from "src/@core/services/categoty.service";
+import { BrandRequest, BrandRequestUpdate } from "src/@core/models/brand.model";
+import { CategoryService } from "src/@core/services/brand.service";
 
 @Controller('category')
 @Roles(Role.Admin)
 export class CategoryController {
   constructor(
-    private readonly categoryService: CategoryService
+    private readonly brandService: CategoryService
   ) {}
 
   @Post()
   @HttpCode(200)
-  create(@Body() category: CategoryRequest) {
-    return this.categoryService.create(category);
+  create(@Body() brand: BrandRequest) {
+    return this.brandService.create(brand);
   }
 
   @Get()
   @HttpCode(200)
   getById(@Query('id') id: string) {
-    return this.categoryService.getCategoryById(id);
+    return this.brandService.getCategoryById(id);
   }
 
   @Get('all')
   @HttpCode(200)
   getAll() {
-    return this.categoryService.getAllCategory();
+    return this.brandService.getAllCategory();
   }
 
   @Put()
   @HttpCode(200)
-  update(@Body() category: CategoryRequestUpdate) {
-    this.categoryService.update(category);
+  update(@Body() brand: BrandRequestUpdate) {
+    this.brandService.update(brand);
   }
 
   @Delete()
   @HttpCode(200)
   delete(@Query('id') id: string) {
-    return this.categoryService.remove(id);
+    return this.brandService.remove(id);
   }
 }

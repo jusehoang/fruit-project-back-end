@@ -14,19 +14,19 @@ export class User {
   @Column({ name: 'password', nullable: false })
   password: string;
 
-  @Column({ name: 'phone', nullable: false })
+  @Column({ name: 'phone' })
   phone: string;
 
-  @Column({ name: 'name', nullable: false })
+  @Column({ name: 'name' })
   name: string;
 
-  @Column({ name: 'address', nullable: false })
+  @Column({ name: 'address' })
   address: string
 
-  @Column({ name: 'email', nullable: false })
+  @Column({ name: 'email' })
   email: string;
 
-  @Column({ name: 'role', nullable: false })
+  @Column({ name: 'role' })
   role: string;
 
   @CreateDateColumn({ type: 'timestamp' })
@@ -36,6 +36,7 @@ export class User {
   updatedDate!: Date;
 
   @OneToOne(() => Cart)
+  @JoinColumn()
   cart: Cart;
 
   @OneToMany(() => Order, (order) => order.user)

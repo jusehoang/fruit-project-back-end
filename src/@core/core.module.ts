@@ -8,7 +8,7 @@ import { ENTITY_MODEL } from './providers/database.provider';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { JwtModule } from '@nestjs/jwt';
-import { CategoryService } from './services/categoty.service';
+import { CategoryService } from './services/brand.service';
 import { CartService } from './services/cart.service';
 
 const INJECTABLES = [

@@ -1,10 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('category')
-export class Category {
+@Entity('brand')
+export class Brand {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ name: 'type', nullable: false })
-  type: string;
+  @Column({ name: 'name', nullable: false })
+  name: string;
 }
