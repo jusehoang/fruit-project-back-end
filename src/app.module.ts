@@ -6,6 +6,8 @@ import configuration from './@core/config/configuration';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { databaseProviderFactory } from './@core/providers/database.provider';
 import { CoreModule } from './@core/core.module';
+import { FirebaseModule } from 'nestjs-firebase';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -19,7 +21,10 @@ import { CoreModule } from './@core/core.module';
       inject: [ConfigService]
     }),
     CoreModule,
-    ApiModule
+    ApiModule,
+    MulterModule.register({
+      dest: './../images'
+    })
   ],
   controllers: [],
   providers: [],

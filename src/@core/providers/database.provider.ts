@@ -26,7 +26,7 @@ export async function databaseProviderFactory(configService: ConfigService): Pro
 		database: databaseConfig.database,
 		synchronize: databaseConfig.sync,
 		entitys: ENTITY_MODEL,
-		logging: true,
+		logging: false,
 		autoLoadEntities: true
 	}
 }

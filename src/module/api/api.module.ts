@@ -6,13 +6,15 @@ import { RolesGuard } from 'src/@core/guards/roles.guard';
 import { AuthController } from './auth.controller';
 import { CategoryController } from './category.controller';
 import { CartController } from './cart.controller';
+import { UploadFileController } from './upload-file.controller';
 
 @Module({
     imports: [CoreModule],
     controllers: [
         AuthController,
         CategoryController,
-        CartController
+        CartController,
+        UploadFileController
     ],
     providers: [
         {

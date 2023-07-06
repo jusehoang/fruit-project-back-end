@@ -1,6 +1,6 @@
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { JwtStrategy } from './guards/jwt.strategy';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Constant } from './constants/constant';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from "@nestjs/common";
@@ -10,6 +10,7 @@ import { AuthService } from './services/auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { CategoryService } from './services/brand.service';
 import { CartService } from './services/cart.service';
+import { FirebaseModule } from 'nestjs-firebase';
 
 const INJECTABLES = [
     // Service
@@ -18,6 +19,16 @@ const INJECTABLES = [
     CategoryService,
     CartService
 ]
+
+const firebaseConfig = {
+    apiKey: "AIzaSyA9oLNnToKdqCZ9k--Y2gt1kEe3GLWUw3E",
+    authDomain: "sale-watch-nestjs.firebaseapp.com",
+    projectId: "sale-watch-nestjs",
+    storageBucket: "sale-watch-nestjs.appspot.com",
+    messagingSenderId: "684492362003",
+    appId: "1:684492362003:web:9cfe463f315969f48e0ae6",
+    measurementId: "G-EPN8WYWWP6"
+};
 
 const CORE_MODULES = [
     JwtModule.register({
@@ -29,7 +40,20 @@ const CORE_MODULES = [
 const PROVIDERS = [JwtStrategy, JwtAuthGuard];
 
 @Module({
-    imports: [TypeOrmModule.forFeature(ENTITY_MODEL), ...CORE_MODULES],
+    imports: [TypeOrmModule.forFeature(ENTITY_MODEL), ...CORE_MODULES, FirebaseModule.forRootAsync({
+        imports: [ConfigModule],
+        useFactory: (config: ConfigService) => {
+            const firebase = config.get('firebase');
+            return {
+                googleApplicationCredential: {
+                    privateKey: firebase.privateKey.replace(/\\n/g, '\n'),
+                    projectId: firebase.projectId,
+                    clientEmail: firebase.clientEmail
+                }
+            }
+        },
+        inject: [ConfigService]
+    })],
     exports: [...CORE_MODULES, ...INJECTABLES, ...PROVIDERS],
     providers: [...INJECTABLES, ...PROVIDERS]
 })

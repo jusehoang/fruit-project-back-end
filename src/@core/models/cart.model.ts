@@ -1,6 +1,7 @@
 import { Product } from "../entities/product.entity";
 
-export class AddItemCart {
+export class Cart {
   id: string;
   items: Product[]; 
+  total: number;
 }
