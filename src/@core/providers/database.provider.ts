@@ -5,13 +5,15 @@ import { Product } from './../entities/product.entity';
 import { User } from '../entities/user.entity';
 import { ConfigService } from "@nestjs/config";
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+import { Item } from '../entities/item.entity';
 
 export const ENTITY_MODEL = [
 	User,
 	Product,
 	Brand,
 	Cart,
-	Order
+	Order,
+	Item
 ];
 
 export async function databaseProviderFactory(configService: ConfigService): Promise<TypeOrmModuleOptions> {

@@ -10,7 +10,6 @@ import { AuthService } from './services/auth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { CategoryService } from './services/brand.service';
 import { CartService } from './services/cart.service';
-import { FirebaseModule } from 'nestjs-firebase';
 
 const INJECTABLES = [
     // Service
@@ -40,20 +39,7 @@ const CORE_MODULES = [
 const PROVIDERS = [JwtStrategy, JwtAuthGuard];
 
 @Module({
-    imports: [TypeOrmModule.forFeature(ENTITY_MODEL), ...CORE_MODULES, FirebaseModule.forRootAsync({
-        imports: [ConfigModule],
-        useFactory: (config: ConfigService) => {
-            const firebase = config.get('firebase');
-            return {
-                googleApplicationCredential: {
-                    privateKey: firebase.privateKey.replace(/\\n/g, '\n'),
-                    projectId: firebase.projectId,
-                    clientEmail: firebase.clientEmail
-                }
-            }
-        },
-        inject: [ConfigService]
-    })],
+    imports: [TypeOrmModule.forFeature(ENTITY_MODEL), ...CORE_MODULES],
     exports: [...CORE_MODULES, ...INJECTABLES, ...PROVIDERS],
     providers: [...INJECTABLES, ...PROVIDERS]
 })

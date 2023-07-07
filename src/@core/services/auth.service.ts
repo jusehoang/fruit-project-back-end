@@ -5,7 +5,6 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { User } from '../entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
-import { Role } from '../decorators/roles.decorator';
 import { Scrypt } from '../ultils/scrypt.ultil';
 import { CartService } from './cart.service';
 
@@ -66,7 +65,7 @@ export class AuthService {
     const cart = await this.cartService.create();
 
     const createUser = this.userRepository.create(userRequest);
-    createUser.cart = cart;
+    // createUser.cart = cart;
 
     return await this.userRepository.save(createUser);
   }

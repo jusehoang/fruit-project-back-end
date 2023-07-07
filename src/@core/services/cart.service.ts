@@ -11,11 +11,11 @@ export class CartService {
     private readonly cartRepository: Repository<Cart>
   ) {}
   async create() {
-    const cart = this.cartRepository.create({
-      items: ''
-    });
+    // const cart = this.cartRepository.create({
+    //   items: ''
+    // });
 
-    return await this.cartRepository.save(cart);
+    // return await this.cartRepository.save(cart);
   }
 
   async addItem(item: Product, idCart: string) {
@@ -25,9 +25,9 @@ export class CartService {
       throw new HttpException('Cart not Found!', HttpStatus.NOT_FOUND);
     }
 
-    const items = JSON.parse(cart.items) as Product[];
-    items.push(item);
-    cart.items = JSON.stringify(items);
+    // const items = JSON.parse(cart.items) as Product[];
+    // items.push(item);
+    // cart.items = JSON.stringify(items);
 
     return await this.cartRepository.update(idCart, cart);
   }
@@ -39,11 +39,11 @@ export class CartService {
       throw new HttpException('Cart not found!', HttpStatus.NOT_FOUND);
     }
 
-    let itemsCart = JSON.parse(cart.items) as Product[];
-    for (let item of items) {
-      itemsCart = itemsCart.filter(itemCart => itemCart.id !== item.id);
-    }
-    cart.items = JSON.stringify(itemsCart);
+    // let itemsCart = JSON.parse(cart.items) as Product[];
+    // for (let item of items) {
+    //   itemsCart = itemsCart.filter(itemCart => itemCart.id !== item.id);
+    // }
+    // cart.items = JSON.stringify(itemsCart);
     return await this.cartRepository.update(idCart, cart);
   }
 

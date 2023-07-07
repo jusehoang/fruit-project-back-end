@@ -1,7 +1,6 @@
 import { Controller, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
-import { FirebaseAdmin, FirebaseModule, InjectFirebaseAdmin } from "nestjs-firebase";
 import { PublicApi } from "src/@core/decorators/public-api.decorator";
 
 @Controller('upload-file')
