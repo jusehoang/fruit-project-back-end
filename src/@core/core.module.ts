@@ -8,26 +8,18 @@ import { ENTITY_MODEL } from './providers/database.provider';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { JwtModule } from '@nestjs/jwt';
-import { CategoryService } from './services/brand.service';
+import { BrandService } from './services/brand.service';
 import { CartService } from './services/cart.service';
+import { CategoryService } from './services/category.service';
 
 const INJECTABLES = [
     // Service
     UserService,
     AuthService,
     CategoryService,
-    CartService
+    CartService,
+    BrandService
 ]
-
-const firebaseConfig = {
-    apiKey: "AIzaSyA9oLNnToKdqCZ9k--Y2gt1kEe3GLWUw3E",
-    authDomain: "sale-watch-nestjs.firebaseapp.com",
-    projectId: "sale-watch-nestjs",
-    storageBucket: "sale-watch-nestjs.appspot.com",
-    messagingSenderId: "684492362003",
-    appId: "1:684492362003:web:9cfe463f315969f48e0ae6",
-    measurementId: "G-EPN8WYWWP6"
-};
 
 const CORE_MODULES = [
     JwtModule.register({

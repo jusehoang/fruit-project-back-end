@@ -6,6 +6,7 @@ import { User } from '../entities/user.entity';
 import { ConfigService } from "@nestjs/config";
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { Item } from '../entities/item.entity';
+import { Category } from '../entities/category.entity';
 
 export const ENTITY_MODEL = [
 	User,
@@ -13,7 +14,8 @@ export const ENTITY_MODEL = [
 	Brand,
 	Cart,
 	Order,
-	Item
+	Item,
+	Category
 ];
 
 export async function databaseProviderFactory(configService: ConfigService): Promise<TypeOrmModuleOptions> {

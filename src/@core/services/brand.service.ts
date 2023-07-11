@@ -5,7 +5,7 @@ import { Brand } from "../entities/brand.entity";
 import { BrandRequest, BrandRequestUpdate } from "../models/brand.model";
 
 @Injectable()
-export class CategoryService {
+export class BrandService {
   constructor(
     @InjectRepository(Brand)
     private readonly categoryRepository: Repository<Brand>
