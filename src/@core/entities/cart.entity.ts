@@ -1,6 +1,6 @@
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Item } from "./item.entity";
+import { Column, Entity, JoinColumn, ManyToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
+import { Product } from "./product.entity";
 
 @Entity('cart')
 export class Cart {
@@ -11,6 +11,7 @@ export class Cart {
   @JoinColumn()
   user: User;
 
-  @OneToMany(type => Item, item => item.id)
-  items: Item[];
+  @ManyToMany(() => Product)
+  @JoinColumn()
+  items: Product[];
 }

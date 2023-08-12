@@ -1,11 +1,13 @@
 import { Body, Controller, Delete, Get, HttpCode, Post, Put, Query } from "@nestjs/common";
+import { PublicApi } from "src/@core/decorators/public-api.decorator";
 import { Role, Roles } from "src/@core/decorators/roles.decorator";
 import { BrandRequest, BrandRequestUpdate } from "src/@core/models/brand.model";
 import { BrandService } from "src/@core/services/brand.service";
 
+@PublicApi()
 @Controller('brand')
-@Roles(Role.Admin)
-export class CategoryController {
+// @Roles(Role.Admin)
+export class BrandController {
   constructor(
     private readonly brandService: BrandService
   ) {}
@@ -18,14 +20,14 @@ export class CategoryController {
 
   @Get()
   @HttpCode(200)
-  getById(@Query('id') id: string) {
-    return this.brandService.getCategoryById(id);
+  getAll(@Query('page') page?: number, @Query('size') size?: number) {
+    return this.brandService.getCategory(page, size);
   }
 
-  @Get('all')
+  @Get()
   @HttpCode(200)
-  getAll() {
-    return this.brandService.getAllCategory();
+  getById(@Query('id') id: string) {
+    return this.brandService.getCategoryById(id);
   }
 
   @Put()
